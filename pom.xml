@@ -14,7 +14,7 @@
     <name>Practica 01 Curso Lunes</name>
     <description>Practica 01 Curso Lunes</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>20</java.version>
     </properties>
     <dependencies>
         <dependency>
