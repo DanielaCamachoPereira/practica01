@@ -30,9 +30,11 @@ public class Arbol implements Serializable {
     public Arbol() {
     }
 
-    public Arbol(String nombre, boolean activo) {
+    public Arbol(String nombre, boolean activo ) {
         this.nombre = nombre;
         this.activo = activo;
     }
+
+    
 
 }
