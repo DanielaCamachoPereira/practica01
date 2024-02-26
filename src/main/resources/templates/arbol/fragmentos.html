@@ -23,7 +23,7 @@
             </div>
         </section>
 
-        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
+        <!-- 2 Fragmento para agregar arbol, es la ventana modal -->
         <section th:fragment="agregarArbol">
             <div id="agregarArbol" 
                  class="modal fade" 
@@ -40,15 +40,23 @@
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{arbol.descripcion}]]</label>
-                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                    <label for="descripcion">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activo">[[#{arbol.activo}]]</label>
+                                    <label for="descripcion">Tamaño</label>
+                                    <input type="text" class="form-control" name="tamano" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion">Color</label>
+                                    <input type="text" class="form-control" name="color" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="activo">Activo?</label>
                                     <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen">[[#{arbol.rutaImagen}]]</label>
+                                    <label for="imagen">Imagen</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
                                     <img id="blah" src="#" alt="your image" height="200"/>
                                 </div>
@@ -69,7 +77,7 @@
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <h4>[[#{arbol.listado}]]</h4>
+                                <h4>Listado de Arboles</h4>
                             </div>
                             <div th:if="${categorias != null and !categorias.empty}">
                                 <table class="table table-striped table-hover">
@@ -86,23 +94,23 @@
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
                                             <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                                                    class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
+                                                    <i class="fas fa-trash"></i>Eliminar</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                                    <i class="fas fa-pencil"></i>Actualizar</a></td></tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${categorias == null or categorias.empty}">
-                                <span>[[#{lista.vacia}]]</span>
+                            <div class="text-center p-2" th:if="${arboles == null or arboles.empty}">
+                                <span>Lista Vacia</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
-                                <h3>[[#{arbol.total}]]</h3>
-                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalARrboles}]]</h4>
+                                <h3>Total de Arboles</h3>
+                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalArboles}]]</h4>
                             </div>
                         </div>
                     </div>
@@ -120,7 +128,7 @@
                           th:object="${categoria}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idCategoria" th:field="*{idARbol}"/>
+                        <input type="hidden" name="idArbol" th:field="*{idArbol}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                         <section th:replace="~{arbol/fragmentos :: botonesEditar}"/>
                         <div id=details>
@@ -129,7 +137,7 @@
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4>[[#{accion.actualizar}]]</h4>
+                                                <h4>Actualizar</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
