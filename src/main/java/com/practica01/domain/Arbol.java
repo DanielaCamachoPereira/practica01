@@ -13,16 +13,18 @@ import lombok.Data;
 @Entity
 @Table(name = "arbol")
 
-public class Arbol implements Serializable { //serializacion porque se va almacenar ciertos datos en el disco //guadar datos
+public class Arbol implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L; //para poder hacer el ciclo de la sumatoria de la categoria.
-
-    @Id //id categoria es la llave de la tabla categoria. 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Los valores generados que estrategia usan, identico a la BD 
-    @Column(name = "id_arbol") //decir cual es el nombre en la base de datos. Se hace la asociación 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "id_arbol") 
     private long idArbol;
     private String nombre;
+    private String tamano;
     private String color;
+    private String ruta_imagen;
     private boolean activo;
 
     public Arbol() {
